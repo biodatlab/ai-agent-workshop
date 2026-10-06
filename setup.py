@@ -63,7 +63,14 @@ def main():
     else:
         venv.EnvBuilder(with_pip=True).create(folder)
     run(python, "-m", "pip", "install", "--upgrade", "pip")
-    run(python, "-m", "pip", "install", "jupyterlab>=4,<5", "ipykernel>=7,<8")
+    # These versions support manager-provisioned CurveZMQ encryption on all OSes.
+    run(python, "-m", "pip", "install", "jupyterlab>=4,<5", "ipykernel>=7.3,<8",
+        "jupyter-client>=8.9,<9", "jupyter-server>=2.20,<3", "pyzmq>=27.1,<28")
+    run(python, "-c",
+        "import zmq; "
+        "assert zmq.has('curve'), "
+        "'Encrypted kernels require a pyzmq build with CurveZMQ/libsodium support. "
+        "Reinstall pyzmq using an official wheel for your platform.'")
     run(python, "-m", "ipykernel", "install", "--prefix", folder,
         "--name", "python3", "--display-name", "Python 3.11 (workshop)")
     run(python, "-c", "import pip, jupyterlab, ipykernel; import sys; assert sys.prefix != sys.base_prefix")
@@ -88,7 +95,11 @@ def main():
         raise RuntimeError("Ollama stopped before setup completed. Run setup again.")
     print("[5/5] Ready: open notebook 03, 08 or 12 and select Run > Run All Cells", flush=True)
     if not args.no_launch:
-        run(python, "-m", "jupyterlab", "--notebook-dir", ROOT, "--MappingKernelManager.default_kernel_name=python3")
+        run(python, "-m", "jupyterlab", "--notebook-dir", ROOT,
+            "--ServerApp.ip=127.0.0.1",
+            "--MappingKernelManager.default_kernel_name=python3",
+            "--MappingKernelManager.transport_encryption=required",
+            "--KernelManager.transport_encryption=required")
 
 
 if __name__ == "__main__":
