@@ -35,19 +35,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 
 | Notebook | เนื้อหา | Runtime | เปิดใน Colab |
 | --- | --- | --- | --- |
-| [01](01_llm_api.ipynb) | LLM API | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1m-mJM4a6mCDEQRFcG4H0T_DFMa_M0NpQ?usp=sharing) |
-| [02](02_structured_output.ipynb) | Structured output | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1ef20YWY0vV-VMNOCweiEPRbOBTiSjiD3?usp=sharing) |
+| [01](01_llm_api.ipynb) | LLM API | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1m-mJM4a6mCDEQRFcG4H0T_DFMa_M0NpQ?usp=sharing) |
+| [02](02_structured_output.ipynb) | Structured output | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1ef20YWY0vV-VMNOCweiEPRbOBTiSjiD3?usp=sharing) |
 | [03](03_local_llm.ipynb) | Local LLM ผ่าน Ollama | Local เป็นหลัก | รัน local |
-| [04](04_chunking.ipynb) | Chunking | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kVJ2cVmKXgi2a3d9xA19NvVXte5ObjyX?usp=sharing) |
-| [05](05_semantic_search.ipynb) | Semantic search | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1D7zy4-lcLgiwqzG0FP6djdctFH_6MCrX?usp=sharing) |
-| [06](06_basic_rag.ipynb) | Basic RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yVNXvgDHKiJcBJ--9AHgpFIO5QGjC3s1?usp=drive_link) |
-| [07](07_pdf_rag.ipynb) | PDF RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/18zSRK-AsaoEn961nRzetXxhHZyWdJmuF?usp=drive_link) |
+| [04](04_chunking.ipynb) | Chunking | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kVJ2cVmKXgi2a3d9xA19NvVXte5ObjyX?usp=sharing) |
+| [05](05_semantic_search.ipynb) | Semantic search | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1D7zy4-lcLgiwqzG0FP6djdctFH_6MCrX?usp=sharing) |
+| [06](06_basic_rag.ipynb) | Basic RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yVNXvgDHKiJcBJ--9AHgpFIO5QGjC3s1?usp=drive_link) |
+| [07](07_pdf_rag.ipynb) | PDF RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/18zSRK-AsaoEn961nRzetXxhHZyWdJmuF?usp=drive_link) |
 | [08](08_local_rag.ipynb) | Local RAG ด้วย LlamaIndex และ Ollama | Local เป็นหลัก | รัน local |
-| [09](09_multimodal_rag.ipynb) | Multimodal RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1Ndbr7FwCftYtmh-0iW6TyQ8z34eIkotx?usp=sharing) |
-| [10](10_tool_calling.ipynb) | Tool calling | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yJodowG5kF_ay4JmDTSv0SsQAKYmlJwn?usp=drive_link) |
-| [11](11_openai_mcp.ipynb) | OpenAI + MCP | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1trr6mt5WsObKcaa2I6p0uK3FSXKTZjLR?usp=drive_link) |
+| [09](09_multimodal_rag.ipynb) | Multimodal RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1Ndbr7FwCftYtmh-0iW6TyQ8z34eIkotx?usp=sharing) |
+| [10](10_tool_calling.ipynb) | Tool calling | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yJodowG5kF_ay4JmDTSv0SsQAKYmlJwn?usp=drive_link) |
+| [11](11_openai_mcp.ipynb) | OpenAI + MCP | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1trr6mt5WsObKcaa2I6p0uK3FSXKTZjLR?usp=drive_link) |
 | [12](12_local_mcp.ipynb) | Local LLM + MCP | Local เป็นหลัก | รัน local |
-| [13](13_agent_loop.ipynb) | Agent loop | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kAVsZz4z_OOrxrcqCE6CKzYhQQ0penyM?usp=drive_link) |
+| [13](13_agent_loop.ipynb) | Agent loop | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kAVsZz4z_OOrxrcqCE6CKzYhQQ0penyM?usp=drive_link) |
 
 ## รายละเอียดเพิ่มเติม
 
@@ -93,7 +93,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 แทนที่ `your_api_key` ด้วย API key จริงก่อนกด **Run All** ใช้รูปแบบเดียวกันทั้ง local และ Colab โดยไม่ต้องตั้ง environment variable หรือ Colab Secrets ก่อนแชร์หรือ commit notebook ให้เปลี่ยน key กลับเป็น `your_api_key`
 
 - **บท 07:** หากมี `sritrang_training_sop_th.pdf` ใน working directory จะอ่านไฟล์นั้น มิฉะนั้น local จะถาม path ของ PDF ส่วน Colab แสดงปุ่ม upload
-- **บท 09:** หากมีภาพตัวอย่างชื่อ `01_*.png`, `02_*.png`, `03_*.png` จะใช้ภาพเหล่านั้น มิฉะนั้น local จะถาม paths คั่นด้วย `;` ส่วน Colab แสดงปุ่ม upload ใช้ภาพ PNG/JPEG 2–3 ภาพตามคำแนะนำในบท
+- **บท 09:** เลือกภาพ PNG/JPEG ของคุณเองหนึ่งภาพหรือหลายภาพผ่านปุ่ม upload ใน Colab หรือหน้าต่างเลือกไฟล์ใน local แล้วพิมพ์คำถามในขั้นตอนสุดท้าย ภาพ คำบรรยาย และ embeddings เก็บใน `image_index` ของ runtime
 
 ## บท local: Ollama
 
