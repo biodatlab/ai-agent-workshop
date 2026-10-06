@@ -16,7 +16,10 @@ def intro(number, title):
     return md(f"""# {number}: {title}
     แบบฝึกหัดสำหรับผู้เข้าร่วม Sri Trang
 
-    เลือก Python kernel ที่ติดตั้ง packages แล้ว เปิด Ollama ที่มีโมเดลตาม README แล้วกด **Run All** ได้เลย
+    เลือก Python kernel แล้วกด **Run All** cell แรกจะติดตั้ง packages ให้
+    สำหรับการรัน local ให้เปิด Ollama ที่มีโมเดลตาม README ไว้ก่อน
+    โค้ด HTTP API ใช้ได้ทั้ง local และ Colab แต่ `localhost` ใน Colab หมายถึงเครื่อง Colab
+    หากเรียก Ollama จาก Colab ต้องกำหนด HOST เป็น endpoint ที่ runtime เข้าถึงได้
     โค้ดและข้อมูลทั้งหมดอยู่ใน cells ไม่ต้องเตรียมหรือแก้ไฟล์ประกอบ
     ตัวอย่างทั้งหมดเป็นข้อมูลสมมติสำหรับการเรียน ไม่ใช่ข้อมูลหรือ SOP จริงของบริษัท
     """)
@@ -32,8 +35,7 @@ def write(name, cells):
 
 
 chat_setup = code('''
-import json
-from urllib.request import Request, urlopen
+import requests
 
 HOST = "http://localhost:11434"
 MODEL = "qwen3:4b"
@@ -41,14 +43,14 @@ MODEL = "qwen3:4b"
 def chat(messages, **kwargs):
     payload = {"model": MODEL, "messages": messages, "stream": False,
                "think": False, "options": {"temperature": 0}, **kwargs}
-    request = Request(HOST + "/api/chat", data=json.dumps(payload).encode("utf-8"),
-                      headers={"Content-Type": "application/json"})
-    with urlopen(request, timeout=180) as response:
-        return json.load(response)["message"]
+    response = requests.post(HOST + "/api/chat", json=payload, timeout=180)
+    return response.json()["message"]
 ''')
 
 write("03_local_llm.ipynb", [
     intro("03", "Local LLM"),
+    md("## ติดตั้ง packages\nรันใน Python kernel ได้ทั้ง Jupyter และ Colab"),
+    code('%pip install -q "requests>=2.32,<3"'),
     md("## 1. เชื่อมต่อ local model\nกำหนดโมเดลและฟังก์ชันส่งข้อความไปยัง Ollama บนเครื่องนี้"), chat_setup,
     md("## 2. เตรียมรายงานกะ\nSystem prompt กำหนดหน้าที่ ส่วน user prompt ให้ข้อมูลที่ต้องสรุป"),
     code('''
@@ -76,6 +78,8 @@ print(short_answer["content"])
 
 write("08_local_rag.ipynb", [
     intro("08", "Local RAG ด้วย LlamaIndex"),
+    md("## ติดตั้ง packages\nติดตั้งเฉพาะ packages ของ RAG ส่วนโมเดล Ollama เตรียมไว้ตาม README"),
+    code('%pip install -q "llama-index-core>=0.14,<0.15" "llama-index-embeddings-ollama>=0.10,<0.11" "llama-index-llms-ollama>=0.9,<0.10"'),
     md("## 1. กำหนดโมเดล local\nใช้ bge-m3 สร้าง embeddings และ qwen3:4b สร้างคำตอบ"),
     code('''
 from llama_index.core import Document, VectorStoreIndex, PromptTemplate
@@ -150,6 +154,8 @@ print(answer.text)
 
 write("12_local_mcp.ipynb", [
     intro("12", "Local LLM + MCP (บทเสริม)"),
+    md("## ติดตั้ง packages\nใช้ Python kernel ที่รองรับ async cells ทั้ง local Jupyter และ Colab"),
+    code('%pip install -q "requests>=2.32,<3" "mcp>=1.10,<2"'),
     md("## 1. เชื่อมต่อ local model\nใช้โมเดลที่รองรับ tool calling เพื่อเลือกเครื่องมือจาก MCP"), chat_setup,
     md("## 2. เตรียม MCP server ใน cell\nเครื่องมืออ่านสถานะรับน้ำยางของโรงงานสมมติ A/B โค้ด server อยู่ที่นี่และรันเป็น subprocess โดยไม่สร้างไฟล์"),
     code('''
