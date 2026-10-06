@@ -1,0 +1,25 @@
+# Local environments and Python caches
+.venv/
+.venv-*/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Notebook state and generated files
+.ipynb_checkpoints/
+.jupyter/
+storage/
+MCP/local_data/
+RAG/local_data/
+
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
