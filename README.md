@@ -1,50 +1,61 @@
 # แบบฝึกหัด Generative AI สำหรับผู้เข้าร่วม Sri Trang
 
-ชุดแบบฝึกหัดสำหรับทดลอง LLM, RAG และเครื่องมือของ AI ทุกบทมีโค้ดใน notebook และติดตั้ง packages ที่ต้องใช้ด้วย `%pip install` ก่อน imports ไม่ต้องติดตั้ง repo เป็น Python package และไม่มี `pyproject.toml`
+## เริ่มใช้งานบน Windows
 
-ตัวอย่างโรงงานยาง น้ำยาง QC และการขนส่งเป็นข้อมูลสมมติสำหรับการเรียน ไม่ใช่ข้อมูลหรือ SOP จริงของบริษัท
+### 1. ติดตั้ง Git, Python 3.11 และ Ollama
 
-| Notebook | เนื้อหา | Runtime |
-| --- | --- | --- |
-| 01 | LLM API | Local / Colab |
-| 02 | Structured output | Local / Colab |
-| 03 | Local LLM ผ่าน Ollama | Local เป็นหลัก |
-| 04 | Chunking | Local / Colab; ใช้ Python standard library ไม่ต้องติดตั้ง packages เพิ่ม |
-| 05 | Semantic search | Local / Colab |
-| 06 | Basic RAG | Local / Colab |
-| 07 | PDF RAG | Local / Colab |
-| 08 | Local RAG ด้วย LlamaIndex และ Ollama | Local เป็นหลัก |
-| 09 | Multimodal RAG | Local / Colab |
-| 10 | Tool calling | Local / Colab |
-| 11 | OpenAI + MCP | Local / Colab |
-| 12 | Local LLM + MCP | Local เป็นหลัก |
-| 13 | Agent loop | Local / Colab |
+- **Git:** [ดาวน์โหลดจากเว็บไซต์ทางการ](https://git-scm.com/install/windows) แล้วติดตั้งด้วยค่าเริ่มต้น
+- **Python 3.11:** [ดาวน์โหลดจากเว็บไซต์ทางการ](https://www.python.org/downloads/release/python-3119/) เลือก **Windows installer (64-bit)** และติดตั้ง Python Launcher ด้วย
+- **Ollama:** [ดาวน์โหลดจากเว็บไซต์ทางการ](https://ollama.com/download/windows) แล้วเปิด installer เพื่อติดตั้ง
 
-## เตรียมเครื่องและเริ่มเรียน (Windows)
+เมื่อติดตั้งครบแล้ว เปิด PowerShell หน้าต่างใหม่
 
-### 1. ดาวน์โหลดและติดตั้งโปรแกรมจากเว็บไซต์ทางการ
-
-- **Git:** [ดาวน์โหลด Git สำหรับ Windows](https://git-scm.com/install/windows) เปิด installer แล้วติดตั้งด้วยค่าเริ่มต้น
-- **Ollama:** [ดาวน์โหลด Ollama สำหรับ Windows](https://ollama.com/download/windows) เปิด `OllamaSetup.exe` แล้วติดตั้ง ไม่ต้องเข้า UI ของแอปหรือเลือกโมเดลเอง
-
-Script ใช้ **Python 3.11** หากยังไม่มี จะติดตั้งด้วย Windows Package Manager (`winget`) ให้ หากเครื่องไม่มี winget ให้ติดตั้ง [Python 3.11](https://www.python.org/downloads/release/python-3119/) จากเว็บไซต์ทางการก่อน โดยเลือก Python Launcher ระหว่างติดตั้ง
-
-ติดตั้งโปรแกรมเสร็จแล้วเปิด PowerShell หน้าต่างใหม่ ต้องมีอินเทอร์เน็ตและพื้นที่ว่างสำหรับ packages กับโมเดล
-
-### 2. Clone repo
-
-เปิด PowerShell ในโฟลเดอร์ที่ต้องการเก็บงาน แล้วรันทีละบรรทัด:
+### 2. ดาวน์โหลด repo
 
 ```powershell
 git clone https://github.com/biodatlab/sritrang-ai-workshop.git
 cd sritrang-ai-workshop
 ```
 
-### 3. รัน setup เพียงคำสั่งเดียว
+### 3. รัน setup
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 ```
+
+รอจน setup เสร็จและ JupyterLab เปิดใน browser เปิด PowerShell นี้ค้างไว้ระหว่างเรียน หากเครื่องไม่มี winget และ Python 3.11 ให้ติดตั้ง [Python 3.11](https://www.python.org/downloads/release/python-3119/) ก่อนรัน setup
+
+### 4. เปิด notebook แล้วรัน
+
+เปิด notebook ใน JupyterLab และเลือก Python kernel สำหรับบท API ให้แทนที่ `OPENAI_API_KEY = "your_api_key"` ด้วย key จริง จากนั้นเลือก **Run → Run All Cells**
+
+บท PDF และภาพให้เลือกไฟล์เมื่อ notebook ถาม หากใช้ Colab ให้เปิดจากลิงก์ในตารางด้านล่าง ใส่ API key แล้วเลือก **Runtime → Run all** โดยไม่ต้องรัน setup บนเครื่อง
+
+## Notebooks
+
+| Notebook | เนื้อหา | Runtime | เปิดใน Colab |
+| --- | --- | --- | --- |
+| 01 | LLM API | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1m-mJM4a6mCDEQRFcG4H0T_DFMa_M0NpQ?usp=sharing) |
+| 02 | Structured output | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1ef20YWY0vV-VMNOCweiEPRbOBTiSjiD3?usp=sharing) |
+| 03 | Local LLM ผ่าน Ollama | Local เป็นหลัก | รัน local |
+| 04 | Chunking | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kVJ2cVmKXgi2a3d9xA19NvVXte5ObjyX?usp=sharing) |
+| 05 | Semantic search | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1D7zy4-lcLgiwqzG0FP6djdctFH_6MCrX?usp=sharing) |
+| 06 | Basic RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yVNXvgDHKiJcBJ--9AHgpFIO5QGjC3s1?usp=drive_link) |
+| 07 | PDF RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/18zSRK-AsaoEn961nRzetXxhHZyWdJmuF?usp=drive_link) |
+| 08 | Local RAG ด้วย LlamaIndex และ Ollama | Local เป็นหลัก | รัน local |
+| 09 | Multimodal RAG | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1Ndbr7FwCftYtmh-0iW6TyQ8z34eIkotx?usp=sharing) |
+| 10 | Tool calling | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yJodowG5kF_ay4JmDTSv0SsQAKYmlJwn?usp=drive_link) |
+| 11 | OpenAI + MCP | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1trr6mt5WsObKcaa2I6p0uK3FSXKTZjLR?usp=drive_link) |
+| 12 | Local LLM + MCP | Local เป็นหลัก | รัน local |
+| 13 | Agent loop | Local / Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kAVsZz4z_OOrxrcqCE6CKzYhQQ0penyM?usp=drive_link) |
+
+## รายละเอียดเพิ่มเติม
+
+ตัวอย่างโรงงานยาง น้ำยาง QC และการขนส่งเป็นข้อมูลสมมติสำหรับการเรียน ไม่ใช่ข้อมูลหรือ SOP จริงของบริษัท
+
+ทุกบทมีโค้ดใน notebook และติดตั้ง packages ที่ต้องใช้ด้วย `%pip install` ก่อน imports ไม่ต้องติดตั้ง repo เป็น Python package บท 04 ใช้ Python standard library จึงไม่ต้องติดตั้ง packages เพิ่ม
+
+### Setup ทำอะไรบ้าง
 
 Script จะทำตามลำดับ:
 
@@ -96,6 +107,6 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 ## แหล่งอ้างอิง
 
-รูปแบบคำอธิบายสั้น ๆ สลับ code cells อ้างอิง [CPF tutorial notebooks](https://github.com/biodatlab/cpf-genai-workshop/tree/main/tutorial_notebooks) ตัวอย่างเกี่ยวข้องกับธุรกิจตาม [เว็บไซต์ Sri Trang](https://www.sritranggroup.com/en/home)
+ตัวอย่างเกี่ยวข้องกับธุรกิจตาม [เว็บไซต์ Sri Trang](https://www.sritranggroup.com/en/home)
 
 สำหรับผู้ดูแล: `build_notebooks.py` สร้างเฉพาะ notebooks local 03, 08 และ 12 ส่วนบท API แก้ไขในไฟล์ notebook โดยตรง ผู้เรียนไม่ต้องรัน generator
