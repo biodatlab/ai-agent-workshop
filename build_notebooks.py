@@ -37,14 +37,18 @@ def write(name, cells):
 chat_setup = code('''
 import requests
 
-HOST = "http://localhost:11434"
+HOST = "http://127.0.0.1:11434"
 MODEL = "qwen3:4b"
 
 def chat(messages, **kwargs):
     payload = {"model": MODEL, "messages": messages, "stream": False,
                "think": False, "options": {"temperature": 0}, **kwargs}
     response = requests.post(HOST + "/api/chat", json=payload, timeout=180)
-    return response.json()["message"]
+    data = response.json()
+    if "error" in data:
+        raise RuntimeError(data["error"])
+    response.raise_for_status()
+    return data["message"]
 ''')
 
 write("03_local_llm.ipynb", [
@@ -87,7 +91,7 @@ from llama_index.core.node_parser import SentenceSplitter
 from llama_index.embeddings.ollama import OllamaEmbedding
 from llama_index.llms.ollama import Ollama
 
-HOST = "http://localhost:11434"
+HOST = "http://127.0.0.1:11434"
 embed_model = OllamaEmbedding(model_name="bge-m3", base_url=HOST)
 llm = Ollama(model="qwen3:4b", base_url=HOST, request_timeout=180,
              context_window=4096, temperature=0, thinking=False)

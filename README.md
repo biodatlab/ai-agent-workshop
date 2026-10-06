@@ -20,43 +20,55 @@
 | 12 | Local LLM + MCP | Local เป็นหลัก |
 | 13 | Agent loop | Local / Colab |
 
-## เปิดบนเครื่องผู้เรียน
+## เตรียมเครื่องและเริ่มเรียน (Windows)
 
-ใช้ Python 3.11 หรือ 3.12 เปิด terminal ในโฟลเดอร์ repo และรันทีละบรรทัด
+### 1. ดาวน์โหลดและติดตั้งโปรแกรมจากเว็บไซต์ทางการ
 
-Windows PowerShell: ใช้ script ที่เตรียมไว้เพื่อสร้าง `.venv` ด้วย Python 3.11 และติดตั้ง JupyterLab กับ ipykernel ผ่าน pip ของ `.venv`:
+- **Git:** [ดาวน์โหลด Git สำหรับ Windows](https://git-scm.com/install/windows) เปิด installer แล้วติดตั้งด้วยค่าเริ่มต้น
+- **Ollama:** [ดาวน์โหลด Ollama สำหรับ Windows](https://ollama.com/download/windows) เปิด `OllamaSetup.exe` แล้วติดตั้ง ไม่ต้องเข้า UI ของแอปหรือเลือกโมเดลเอง
 
-```powershell
-.\setup_env.ps1
-.\.venv\Scripts\python.exe -m jupyterlab
-```
+Script ใช้ **Python 3.11** หากยังไม่มี จะติดตั้งด้วย Windows Package Manager (`winget`) ให้ หากเครื่องไม่มี winget ให้ติดตั้ง [Python 3.11](https://www.python.org/downloads/release/python-3119/) จากเว็บไซต์ทางการก่อน โดยเลือก Python Launcher ระหว่างติดตั้ง
 
-หาก PowerShell ไม่อนุญาตให้รัน script ใช้คำสั่งนี้แทน โดยตั้งค่าสำหรับ process นี้เท่านั้น:
+ติดตั้งโปรแกรมเสร็จแล้วเปิด PowerShell หน้าต่างใหม่ ต้องมีอินเทอร์เน็ตและพื้นที่ว่างสำหรับ packages กับโมเดล
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\setup_env.ps1
-```
+### 2. Clone repo
 
-หรือสร้าง environment และติดตั้ง runtime ด้วยคำสั่งทีละบรรทัด:
+เปิด PowerShell ในโฟลเดอร์ที่ต้องการเก็บงาน แล้วรันทีละบรรทัด:
 
 ```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --upgrade pip
-.\.venv\Scripts\python.exe -m pip install "jupyterlab>=4,<5" "ipykernel>=7,<8"
-.\.venv\Scripts\python.exe -m jupyterlab
+git clone https://github.com/biodatlab/sritrang-ai-workshop.git
+cd sritrang-ai-workshop
 ```
 
-ไม่ต้อง activate environment เพราะเรียก Python และ pip ของ `.venv` โดยตรง Packages ของแบบฝึกหัดยังติดตั้งด้วย `%pip install` ใน notebook
+### 3. รัน setup เพียงคำสั่งเดียว
 
-macOS / Linux:
-
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install jupyterlab ipykernel
-.venv/bin/python -m jupyterlab
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 ```
 
-เปิด notebook ใน JupyterLab หรือ VS Code เลือก Python kernel แล้วกด **Run All** cell ติดตั้ง packages จะทำงานก่อน imports หาก environment เดิมเคย import packages ต่างเวอร์ชัน ให้ restart kernel หลังติดตั้งแล้วรันใหม่
+Script จะทำตามลำดับ:
+
+1. เตรียม Python 3.11 โดยใช้เวอร์ชันที่ติดตั้งอยู่ หรือให้ winget ติดตั้งเมื่อไม่มี
+2. สร้าง `.venv` และใช้ pip ของ `.venv` ติดตั้ง JupyterLab กับ ipykernel
+3. เปิด Ollama server ใน background หากยังไม่ทำงาน ไม่ต้องเปิดแอปเอง
+4. ดาวน์โหลด `qwen3:4b` สำหรับสร้างคำตอบและใช้เครื่องมือ และ `bge-m3` สำหรับ embeddings
+5. เปิด JupyterLab ใน browser จากโฟลเดอร์ repo
+
+รอจนติดตั้งและดาวน์โหลดเสร็จ การดาวน์โหลดครั้งแรกอาจใช้เวลาหลายนาที จากนั้นเปิด notebook เลือก Python kernel และกด **Run → Run All Cells** Packages ของแต่ละบทจะติดตั้งจาก `%pip install` ใน cell แรก ไม่ต้อง activate environment หรือตั้งค่าโมเดลเพิ่ม
+
+เปิด PowerShell ที่รัน JupyterLab ค้างไว้ระหว่างเรียน ส่วน Ollama server ทำงานใน background หาก browser ไม่เปิดอัตโนมัติ ให้เปิดลิงก์ที่ JupyterLab แสดงใน terminal
+
+### เปิดเรียนครั้งถัดไป
+
+ใช้คำสั่ง setup เดิมได้อีกครั้ง Script ใช้ environment และโมเดลที่มีอยู่ต่อ และตรวจให้ Ollama พร้อมก่อนเปิด JupyterLab
+
+หากต้องการเตรียมเครื่องอย่างเดียวโดยยังไม่เปิด JupyterLab:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1 -NoLaunch
+```
+
+ใช้ `setup.ps1` ไฟล์เดียวสำหรับเตรียม environment และ Ollama
 
 ## บทที่ใช้ API: รันได้ทั้ง local และ Colab
 
@@ -72,18 +84,11 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 - **บท 07:** หากมี `sritrang_training_sop_th.pdf` ใน working directory จะอ่านไฟล์นั้น มิฉะนั้น local จะถาม path ของ PDF ส่วน Colab แสดงปุ่ม upload
 - **บท 09:** หากมีภาพตัวอย่างชื่อ `01_*.png`, `02_*.png`, `03_*.png` จะใช้ภาพเหล่านั้น มิฉะนั้น local จะถาม paths คั่นด้วย `;` ส่วน Colab แสดงปุ่ม upload ใช้ภาพ PNG/JPEG 2–3 ภาพตามคำแนะนำในบท
 
-## บท local: เตรียม Ollama
+## บท local: Ollama
 
-ติดตั้งและเปิด [Ollama](https://ollama.com/download) แล้วดาวน์โหลดโมเดลก่อนเริ่ม:
+`setup.ps1` เปิด server และดาวน์โหลดโมเดลให้แล้ว บท 03, 08 และ 12 จึงพร้อมเรียก Ollama โดยไม่ต้องเข้า UI บท local ไม่ต้องมี cloud API key
 
-```text
-ollama pull qwen3:4b
-ollama pull bge-m3
-```
-
-`qwen3:4b` ใช้สร้างคำตอบและเลือกเครื่องมือ ส่วน `bge-m3` ใช้สร้าง embeddings ในบท 08 เปิด Ollama ไว้ระหว่างเรียน บท local ไม่ต้องมี cloud API key
-
-ค่า `HOST = "http://localhost:11434"` หมายถึงเครื่องที่รัน notebook หากเรียก API ของ Ollama จาก Colab ต้องเปลี่ยน HOST เป็น endpoint ที่ runtime เข้าถึงได้ เพราะ localhost ของ Colab ไม่ใช่เครื่องผู้เรียน คู่มือนี้ไม่ติดตั้งหรือเปิด Ollama บน Colab
+ค่า `HOST = "http://127.0.0.1:11434"` หมายถึงเครื่องที่รัน notebook หากเรียก API ของ Ollama จาก Colab ต้องเปลี่ยน HOST เป็น endpoint ที่ runtime เข้าถึงได้ เพราะ localhost ของ Colab ไม่ใช่เครื่องผู้เรียน คู่มือนี้ไม่ติดตั้งหรือเปิด Ollama บน Colab
 
 บท 08 มีเอกสารต้นทางใน cell และใช้ LlamaIndex ทำ retrieval จริง บท 12 มีโค้ด MCP server ใน cell โดยเริ่มและปิด subprocess อัตโนมัติ ไม่ต้องเตรียมไฟล์ server เพิ่ม
 
