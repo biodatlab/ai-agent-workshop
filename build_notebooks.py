@@ -28,7 +28,8 @@ def intro(number, title):
 def write(name, cells):
     for i, cell in enumerate(cells):
         cell["id"] = f"cell-{i:02d}"
-    Path(name).write_text(json.dumps({"nbformat": 4, "nbformat_minor": 5,
+    output_dir = Path(__file__).resolve().parent
+    (output_dir / name).write_text(json.dumps({"nbformat": 4, "nbformat_minor": 5,
         "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
                      "language_info": {"name": "python", "version": "3.11"}},
         "cells": cells}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
