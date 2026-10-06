@@ -23,3 +23,6 @@ RAG/local_data/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Ollama startup diagnostics
+ollama-setup.log
