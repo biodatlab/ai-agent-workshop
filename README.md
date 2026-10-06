@@ -13,10 +13,10 @@
 
 #### 1. ติดตั้งโปรแกรม
 
-- **Git:** [เว็บไซต์ทางการ](https://git-scm.com/downloads) เลือกระบบปฏิบัติการของคุณ
-- **Python 3.11:** [เว็บไซต์ทางการ](https://www.python.org/downloads/release/python-3119/) — Windows เลือก Windows installer (64-bit) และติดตั้ง Python Launcher; macOS เลือก macOS installer
-- **Linux Python 3.11:** ติดตั้ง `python3.11` และแพ็กเกจ venv ผ่าน package manager ของ distribution เช่น Ubuntu ที่มีแพ็กเกจนี้ใช้ `sudo apt install python3.11 python3.11-venv` หากไม่มี ให้ใช้ [คำแนะนำ Python ทางการ](https://docs.python.org/3/using/unix.html)
-- **Ollama:** [เว็บไซต์ทางการ](https://ollama.com/download) เลือก Windows, macOS หรือ Linux และติดตั้งตามคำแนะนำของระบบนั้น
+- **Git:** [![Download Git](https://img.shields.io/badge/Download_Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/downloads) เลือกระบบปฏิบัติการของคุณ
+- **Python 3.11:** [![Download Python 3.11](https://img.shields.io/badge/Python_3.11-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3119/) — Windows เลือก Windows installer (64-bit) และติดตั้ง Python Launcher; macOS เลือก macOS installer
+- **Linux Python 3.11:** ติดตั้ง `python3.11` และแพ็กเกจ venv ผ่าน package manager ของ distribution เช่น Ubuntu ที่มีแพ็กเกจนี้ใช้ `sudo apt install python3.11 python3.11-venv` หากไม่มี ให้ใช้ [![Python Linux installation guide](https://img.shields.io/badge/Python_Linux_Guide-3776AB?style=flat-square&logo=python&logoColor=white)](https://docs.python.org/3/using/unix.html)
+- **Ollama:** [![Download Ollama](https://img.shields.io/badge/Download_Ollama-000000?style=flat-square&logo=ollama&logoColor=white)](https://ollama.com/download) เลือก Windows, macOS หรือ Linux และติดตั้งตามคำแนะนำของระบบนั้น
 
 ติดตั้งเสร็จแล้วเปิด Terminal ใหม่ (Windows ใช้ PowerShell)
 
@@ -51,19 +51,19 @@ python3.11 setup.py
 
 | Notebook | เนื้อหา | Runtime | เปิดใน Colab |
 | --- | --- | --- | --- |
-| [01](01_llm_api.ipynb) | LLM API | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1m-mJM4a6mCDEQRFcG4H0T_DFMa_M0NpQ?usp=sharing) |
-| [02](02_structured_output.ipynb) | Structured output | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1ef20YWY0vV-VMNOCweiEPRbOBTiSjiD3?usp=sharing) |
-| [03](03_local_llm.ipynb) | Local LLM ผ่าน Ollama | Local | รัน local |
-| [04](04_chunking.ipynb) | Chunking | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kVJ2cVmKXgi2a3d9xA19NvVXte5ObjyX?usp=sharing) |
-| [05](05_semantic_search.ipynb) | Semantic search | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1D7zy4-lcLgiwqzG0FP6djdctFH_6MCrX?usp=sharing) |
-| [06](06_basic_rag.ipynb) | Basic RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yVNXvgDHKiJcBJ--9AHgpFIO5QGjC3s1?usp=drive_link) |
-| [07](07_pdf_rag.ipynb) | PDF RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/18zSRK-AsaoEn961nRzetXxhHZyWdJmuF?usp=drive_link) |
-| [08](08_local_rag.ipynb) | Local RAG ด้วย LlamaIndex และ Ollama | Local | รัน local |
-| [09](09_multimodal_rag.ipynb) | Multimodal RAG | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1Ndbr7FwCftYtmh-0iW6TyQ8z34eIkotx?usp=sharing) |
-| [10](10_tool_calling.ipynb) | Tool calling | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1yJodowG5kF_ay4JmDTSv0SsQAKYmlJwn?usp=drive_link) |
-| [11](11_openai_mcp.ipynb) | OpenAI + MCP | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1trr6mt5WsObKcaa2I6p0uK3FSXKTZjLR?usp=drive_link) |
-| [12](12_local_mcp.ipynb) | Local LLM + MCP | Local | รัน local |
-| [13](13_agent_loop.ipynb) | Agent loop | Colab | [เปิดใน Colab](https://colab.research.google.com/drive/1kAVsZz4z_OOrxrcqCE6CKzYhQQ0penyM?usp=drive_link) |
+| [![Open notebook 01](https://img.shields.io/badge/Notebook_01-F37626?style=flat-square&logo=jupyter&logoColor=white)](01_llm_api.ipynb) | LLM API | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1m-mJM4a6mCDEQRFcG4H0T_DFMa_M0NpQ?usp=sharing) |
+| [![Open notebook 02](https://img.shields.io/badge/Notebook_02-F37626?style=flat-square&logo=jupyter&logoColor=white)](02_structured_output.ipynb) | Structured output | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1ef20YWY0vV-VMNOCweiEPRbOBTiSjiD3?usp=sharing) |
+| [![Open notebook 03](https://img.shields.io/badge/Notebook_03-F37626?style=flat-square&logo=jupyter&logoColor=white)](03_local_llm.ipynb) | Local LLM ผ่าน Ollama | Local | รัน local |
+| [![Open notebook 04](https://img.shields.io/badge/Notebook_04-F37626?style=flat-square&logo=jupyter&logoColor=white)](04_chunking.ipynb) | Chunking | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1kVJ2cVmKXgi2a3d9xA19NvVXte5ObjyX?usp=sharing) |
+| [![Open notebook 05](https://img.shields.io/badge/Notebook_05-F37626?style=flat-square&logo=jupyter&logoColor=white)](05_semantic_search.ipynb) | Semantic search | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1D7zy4-lcLgiwqzG0FP6djdctFH_6MCrX?usp=sharing) |
+| [![Open notebook 06](https://img.shields.io/badge/Notebook_06-F37626?style=flat-square&logo=jupyter&logoColor=white)](06_basic_rag.ipynb) | Basic RAG | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1yVNXvgDHKiJcBJ--9AHgpFIO5QGjC3s1?usp=drive_link) |
+| [![Open notebook 07](https://img.shields.io/badge/Notebook_07-F37626?style=flat-square&logo=jupyter&logoColor=white)](07_pdf_rag.ipynb) | PDF RAG | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/18zSRK-AsaoEn961nRzetXxhHZyWdJmuF?usp=drive_link) |
+| [![Open notebook 08](https://img.shields.io/badge/Notebook_08-F37626?style=flat-square&logo=jupyter&logoColor=white)](08_local_rag.ipynb) | Local RAG ด้วย LlamaIndex และ Ollama | Local | รัน local |
+| [![Open notebook 09](https://img.shields.io/badge/Notebook_09-F37626?style=flat-square&logo=jupyter&logoColor=white)](09_multimodal_rag.ipynb) | Multimodal RAG | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1Ndbr7FwCftYtmh-0iW6TyQ8z34eIkotx?usp=sharing) |
+| [![Open notebook 10](https://img.shields.io/badge/Notebook_10-F37626?style=flat-square&logo=jupyter&logoColor=white)](10_tool_calling.ipynb) | Tool calling | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1yJodowG5kF_ay4JmDTSv0SsQAKYmlJwn?usp=drive_link) |
+| [![Open notebook 11](https://img.shields.io/badge/Notebook_11-F37626?style=flat-square&logo=jupyter&logoColor=white)](11_openai_mcp.ipynb) | OpenAI + MCP | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1trr6mt5WsObKcaa2I6p0uK3FSXKTZjLR?usp=drive_link) |
+| [![Open notebook 12](https://img.shields.io/badge/Notebook_12-F37626?style=flat-square&logo=jupyter&logoColor=white)](12_local_mcp.ipynb) | Local LLM + MCP | Local | รัน local |
+| [![Open notebook 13](https://img.shields.io/badge/Notebook_13-F37626?style=flat-square&logo=jupyter&logoColor=white)](13_agent_loop.ipynb) | Agent loop | Colab | [![Open in Colab](https://img.shields.io/badge/Open_in_Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1kAVsZz4z_OOrxrcqCE6CKzYhQQ0penyM?usp=drive_link) |
 
 ## รายละเอียดเพิ่มเติม
 
@@ -131,6 +131,6 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 ## แหล่งอ้างอิง
 
-ตัวอย่างเกี่ยวข้องกับธุรกิจตาม [เว็บไซต์ Sri Trang](https://www.sritranggroup.com/en/home)
+ตัวอย่างเกี่ยวข้องกับธุรกิจตาม [![Sri Trang official website](https://img.shields.io/badge/Sri_Trang-007A53?style=flat-square)](https://www.sritranggroup.com/en/home)
 
 สำหรับผู้ดูแล: `build_notebooks.py` สร้างเฉพาะ notebooks local 03, 08 และ 12 ส่วนบท API แก้ไขในไฟล์ notebook โดยตรง ผู้เรียนไม่ต้องรัน generator
